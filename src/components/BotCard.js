@@ -3,8 +3,6 @@ import React from "react";
 const BotCard = props => {
   const { bot } = props;
 
-  console.log(bot)
-
   let botType;
 
   switch (props.data.bot_class) {
@@ -22,7 +20,7 @@ const BotCard = props => {
   }
 
   return (
-    <div className="ui column">
+    <div className="ui column botcard">
       <div
         className="ui card"
         key={props.data.id}
