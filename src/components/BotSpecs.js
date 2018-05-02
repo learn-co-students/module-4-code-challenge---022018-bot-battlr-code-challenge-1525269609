@@ -64,7 +64,6 @@ const BotSpecs = props => {
             <button
               className="ui button fluid"
               onClick={() =>
-                // console.log('connect this to a function that shows all bots')
                 removeSpecs()
               }
             >
@@ -73,10 +72,9 @@ const BotSpecs = props => {
             <button
               className="ui button fluid"
               onClick={() =>
-                console.log(
-                  // "connect this to a function that adds this bot to your bot army list"
+
                   refactorAddToArmy()
-                )
+
               }
             >
               Enlist

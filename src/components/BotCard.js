@@ -6,7 +6,6 @@ const BotCard = props => {
   const {selectBot} = props;
 
   let botType;
-  // let callback = this.props.selectBot
 
   switch (bot.bot_class) {
     case "Assault":
@@ -22,12 +21,6 @@ const BotCard = props => {
       botType = <div />;
   }
 
-  // onClick={() => console.log("add code to connect event listener")}  //original
-
-  // onClick={() => this.props.selectBot(this.props.index)}             //not work
-  // handleClick = ()=>{
-  //   console.log("inside handleClick");
-  // }
 
   return (
     <div className="ui column">
