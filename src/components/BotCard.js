@@ -3,6 +3,29 @@ import React from "react";
 const BotCard = props => {
   const { bot } = props;
 
+  // const handleClick = (event) => {
+  //   let targetId = event.target.parentElement.parentElement.id
+  //   if (props.handleRemoval===undefined) {
+  //     props.handleRecruitment(targetId)
+  //   } else {
+  //     props.handleRemoval(targetId)
+  //   }
+  // }
+
+
+  //this should be called (handleclick)
+  const handleSpecsFunc = (event) => {
+
+    let targetId = event.target.parentElement.parentElement.id
+    if (props.bot.enlisted===true) {
+      props.handleRemoval(targetId)
+    } else {
+      props.handleSpecs(targetId)
+    }
+  }
+
+
+
   let botType;
 
   switch (bot.bot_class) {
@@ -23,8 +46,9 @@ const BotCard = props => {
     <div className="ui column">
       <div
         className="ui card"
+        id={bot.id}
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={handleSpecsFunc}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
