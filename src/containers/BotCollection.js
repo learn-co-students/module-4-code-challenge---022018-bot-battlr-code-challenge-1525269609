@@ -12,7 +12,7 @@ export default class BotCollection extends React.Component {
   }
 
   close = () => {
-    this.setState({ bot: '' })
+    this.setState({ bot: "" })
   }
 
   render() {
