@@ -59,7 +59,7 @@ class BotsPage extends React.Component {
         {this.state.displaybots !== [] ? <YourBotArmy bots={this.state.displaybots} displaybots={this.state.displaybots} removeRobot={this.removeRobot}/>
         : null }
         {this.state.speccedBot ? <BotSpecs bot = {this.state.speccedBot} clearspeccedBot = {this.clearspeccedBot} pickRobot = {this.pickRobot}/> :
-        <BotCollection bots={this.state.bots} speccedBot = {this.speccedBot} displaybots={this.state.displaybots} removeRobot={this.removeRobot}/>}
+        <BotCollection bots={this.state.bots} speccedBot = {this.speccedBot}/>}
       </div>
     );
   }
