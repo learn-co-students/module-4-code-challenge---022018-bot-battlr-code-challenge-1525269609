@@ -22,7 +22,8 @@ class BotsPage extends React.Component {
       })
     }else{
       this.setState({
-        selectedBots: [...botArmy, foundBot]
+        selectedBots: [...botArmy, foundBot],
+        chosenBot: null
       })
     }
   }

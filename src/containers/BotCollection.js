@@ -16,9 +16,9 @@ class BotCollection extends React.Component {
   render(){
   	return (
   	  <div className="ui four column grid">
+        <h1>Collection of all bots</h1>
     		<div className="row">
           {this.renderBots()}
-    		  Collection of all bots
     		</div>
   	  </div>
   	);
