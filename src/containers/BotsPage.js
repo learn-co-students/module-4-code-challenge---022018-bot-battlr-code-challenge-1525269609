@@ -30,21 +30,22 @@ class BotsPage extends React.Component {
     console.log(bot);
     // console.log(this.botInArmy(bot));
     // this.setState({specsSelected: true})
-    this.setState({specsSelected: bot})
-    // if(!this.botInArmy(bot)){
+    if(!this.botInArmy(bot)){
+      this.setState({specsSelected: bot})
+
     //   let bots = [...this.state.army]
     //   bots.push(bot)
     //   this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
-    // }
-    // else{
+    }
+    else{
     //   //remove bot from army
-    //   let bots = [...this.state.army]
-    //   let index = null;
-    //   for(let i=0;i<bots.length;i++){if(bot.id === bots[i].id){index=i}}
-    //   console.log("*********INDEX is:" +index);
-    //   bots.splice(index,1)
-    //   this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
-    // }
+      let bots = [...this.state.army]
+      let index = null;
+      for(let i=0;i<bots.length;i++){if(bot.id === bots[i].id){index=i}}
+      console.log("*********INDEX is:" +index);
+      bots.splice(index,1)
+      this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
+    }
   }
 
   refactorAddToArmy = ()=>{
