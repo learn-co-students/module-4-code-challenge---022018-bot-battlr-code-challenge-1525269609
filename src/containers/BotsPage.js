@@ -25,17 +25,16 @@ class BotsPage extends React.Component {
   }
 
   pickRobot = (bot) => {
-    console.log("pickrobot");
     if (!this.state.displaybots.includes(bot)){
       let newbots = [...this.state.displaybots, bot]
       this.setState({
-        displaybots: newbots
+        displaybots: newbots,
+        speccedBot: null
       })
     }
   }
 
   speccedBot = (bot) => {
-    console.log("speccedbot");
     this.setState({
       speccedBot: bot
     })
