@@ -2,6 +2,7 @@ import React from "react";
 import BotCollection from './BotCollection'
 import YourBotArmy from './YourBotArmy'
 import BotSpecs from '../components/BotSpecs'
+import Filter from '../components/Filter'
 const API = 'https://bot-battler-api.herokuapp.com/api/v1/bots'
 
 class BotsPage extends React.Component {
@@ -10,7 +11,8 @@ class BotsPage extends React.Component {
     this.state = {
       bots: [],
       yourBots: [],
-      selectedBot: null
+      selectedBot: null,
+      filter: null
     }
   }
 
@@ -48,6 +50,12 @@ class BotsPage extends React.Component {
     })
   }
 
+  selectFilter = (filter) => {
+    this.setState({
+      filter: filter === 'All' ? null : filter
+    })
+  }
+
   render() {
     return (
       <div>
@@ -61,7 +69,13 @@ class BotsPage extends React.Component {
             deselectBot={this.deselectBot}
             enlisted={this.state.yourBots.includes(this.state.selectedBot)}
           /> :
-          <BotCollection bots={this.state.bots} selectBot={this.selectBot} />
+          <React.Fragment>
+            <Filter selectFilter={this.selectFilter}/>
+            <BotCollection
+              bots={this.state.filter ? this.state.bots.filter(bot => bot.bot_class === this.state.filter) : this.state.bots}
+              selectBot={this.selectBot}
+            />
+          </React.Fragment>
         }
       </div>
     )
