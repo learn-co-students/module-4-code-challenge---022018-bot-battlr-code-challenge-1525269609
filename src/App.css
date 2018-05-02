@@ -12,3 +12,8 @@
 .ui.grid {
   padding: 0px 20px;
 }
+
+.filter {
+  max-width: 100%;
+  padding: 20px;
+}
