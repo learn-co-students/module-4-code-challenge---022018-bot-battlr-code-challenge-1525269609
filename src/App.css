@@ -4,6 +4,22 @@
   max-width: 100%;
 }
 
+.filter {
+  margin: 10px;
+  text-align: center;
+}
+
+#your-bot-army {
+  font-family: 'Gugi';
+  font-size: 12vw;
+  position: absolute;
+  opacity: 0.5;
+}
+
+.botcard {
+  z-index: 2;
+}
+
 .ui.grid > .row.bot-army-row {
   flex-wrap: nowrap;
   min-height: 100%;
