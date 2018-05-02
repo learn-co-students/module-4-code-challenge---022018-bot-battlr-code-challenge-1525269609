@@ -19,9 +19,28 @@ class BotsPage extends React.Component {
     // values: see below
   }
 
+  botInArmy=(bot)=>{
+    return this.state.army.find((armybot)=>{return armybot.id === bot.id})
+  }
+
   selectBot = (bot)=>{
     console.log("BotsPage: botcard returned object: ");
     console.log(bot);
+    console.log(this.botInArmy(bot));
+    if(!this.botInArmy(bot)){
+      let bots = [...this.state.army]
+      bots.push(bot)
+      this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
+    }
+    else{
+      //remove bot from army
+      let bots = [...this.state.army]
+      let index = null;
+      for(let i=0;i<bots.length;i++){if(bot.id === bots[i].id){index=i}}
+      console.log("*********INDEX is:" +index);
+      bots.splice(index,1)
+      this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
+    }
   }
 
   storeJSON(json){
