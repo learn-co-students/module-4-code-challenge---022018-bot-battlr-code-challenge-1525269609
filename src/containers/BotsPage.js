@@ -49,9 +49,11 @@ class BotsPage extends React.Component {
 
   refactorAddToArmy = ()=>{
       let bot = this.state.specsSelected
-      let bots = [...this.state.army]
-      bots.push(bot)
-      this.setState({army: bots, specsSelected: false},()=>{console.log("logging army:");console.log(this.state.army);})
+      if(!this.botInArmy(bot)){
+        let bots = [...this.state.army]
+        bots.push(bot)
+        this.setState({army: bots, specsSelected: false},()=>{console.log("logging army:");console.log(this.state.army);})
+    }
   }
 
   removeSpecs = ()=>{
