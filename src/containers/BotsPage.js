@@ -11,7 +11,8 @@ class BotsPage extends React.Component {
 
     this.state = {
       botCollection: [],
-      botArmy: []
+      botArmy: [],
+      clickedBot: null
     }
   }
 
@@ -25,6 +26,27 @@ class BotsPage extends React.Component {
       })
     })
   }
+
+  handleSpecs = (targetId) => {
+    if (this.state.clickedBot!==null) {
+      let formerClicked = this.state.clickedBot
+      formerClicked.clicked = false
+    }
+    let clickedBot = this.state.botCollection.find(bot=>{
+      return bot.id===parseInt(targetId)
+    })
+    console.log(clickedBot.enlisted)
+    clickedBot.clicked = true
+    this.setState({
+      clickedBot: clickedBot
+    })
+  }
+
+  handleBack = () => {
+    console.log("working")
+    //didn't quite have time to write the func to set this back
+  }
+
 
   handleRecruitment = (targetId) => {
     let recruited = this.state.botCollection.find(bot=>{
@@ -42,6 +64,7 @@ class BotsPage extends React.Component {
     let removed = this.state.botArmy.find(bot=>{
       return bot.id===parseInt(targetId)
     })
+    removed.enlisted = false
     let index = this.state.botArmy.indexOf(removed)
     this.setState({
       botArmy: [...this.state.botArmy.slice(0, index), ...this.state.botArmy.slice(index+1)]
@@ -49,11 +72,10 @@ class BotsPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.botArmy)
     return (
       <div>
-        <YourBotArmy army={this.state.botArmy} handleRemoval={this.handleRemoval}/>
-        <BotCollection bots={this.state.botCollection} handleRecruitment={this.handleRecruitment}/>
+        <YourBotArmy army={this.state.botArmy} handleRemoval={this.handleRemoval} handleSpecs={this.handleSpecs}/>
+        <BotCollection bots={this.state.botCollection} handleRecruitment={this.handleRecruitment} handleSpecs={this.handleSpecs} clickedBot={this.state.clickedBot} army={this.state.botArmy} handleBack={this.handleBack}/>
       </div>
     );
   }
