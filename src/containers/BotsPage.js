@@ -14,7 +14,7 @@ export default class BotsPage extends React.Component {
   }
 
   adds = (x) => {
-    (!this.state.army.includes(x)) ? this.setState({ army: [...this.state.army, x] }) : console.log("Already enlisted")
+    (!this.state.army.includes(x)) ? this.setState({ army: [...this.state.army, x] }) : console.log(`${x.name} already enlisted`)
   }
 
   remove = (x) => {
