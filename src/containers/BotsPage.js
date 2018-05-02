@@ -2,13 +2,14 @@ import React from "react";
 import BotCollection from "./BotCollection"
 import YourBotArmy from "./YourBotArmy"
 import BotSpecs from "../components/BotSpecs"
+import Sorter from "../components/Sorter"
 
 class BotsPage extends React.Component {
-  //start here with your code for step one
   state = {
     bots: [],
     army: [],
-    shownBot: false
+    shownBot: false,
+    sortBy: "id"
   }
 
   componentDidMount(){
@@ -56,11 +57,20 @@ class BotsPage extends React.Component {
     })
   }
 
+  changeSort = (e) => {
+    let sortedBots = this.state.bots.sort((a,b) => {return b[e.target.value] - a[e.target.value]})
+    this.setState({
+      bots: sortedBots,
+      sortBy: e.target.value
+    })
+  }
+
   render() {
     let show = this.state.shownBot ? this.state.shownBot : <BotCollection showBot={this.showBot} addToArmy={this.addToArmy} bots={this.state.bots} army={this.state.army}/>
     return (
       <div>
         <YourBotArmy removeFromArmy={this.removeFromArmy} bots={this.state.bots} army={this.state.army} />
+        <Sorter changeSort={this.changeSort} sortBy={this.state.sortBy}/><br/>
         {show}
       </div>
     );
