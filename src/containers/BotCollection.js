@@ -9,20 +9,15 @@ class BotCollection extends React.Component {
     let bots = this.props.bots.map(bot=><BotCard
       key={bot.id}
       addToArmy={this.props.addToArmy}
+      showBot={this.props.showBot}
       bot_class={bot["bot_class"]}
-      id={bot.id}
-      avatar_url={bot.avatar_url}
-      name={bot.name}
-      catchphrase={bot.catchphrase}
-      health={bot.health}
-      damage={bot.damage}
-      armor={bot.armor}
+      {...bot}
       />)
+
   	return (
   	  <div className="ui four column grid">
     		<div className="row">
     		  {bots}
-    		  Collection of all bots
     		</div>
   	  </div>
   	);

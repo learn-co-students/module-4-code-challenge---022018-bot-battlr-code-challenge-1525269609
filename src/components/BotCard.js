@@ -25,8 +25,8 @@ const BotCard = props => {
         className="ui card"
         key={bot.id}
         onClick={() => {
-          if (bot.addToArmy){
-            bot.addToArmy(bot.id)
+          if (bot.showBot) { 
+            bot.showBot(bot.id)
           } else {
             bot.removeFromArmy(bot.id)
           }
