@@ -1,6 +1,6 @@
 import React from "react";
 
-const BotCard = props => {
+const DisplayBotCard = props => {
   const { bot } = props;
 
   let botType;
@@ -18,13 +18,12 @@ const BotCard = props => {
     default:
       botType = <div />;
   }
-
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => {props.speccedBot(bot)}}
+        onClick={() => props.removeRobot(bot)}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -59,4 +58,4 @@ const BotCard = props => {
 
 };
 
-export default BotCard;
+export default DisplayBotCard;
