@@ -46,6 +46,14 @@ class BotsPage extends React.Component {
     //   this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
     // }
   }
+
+  refactorAddToArmy = ()=>{
+      let bot = this.state.specsSelected
+      let bots = [...this.state.army]
+      bots.push(bot)
+      this.setState({army: bots, specsSelected: false},()=>{console.log("logging army:");console.log(this.state.army);})
+  }
+
   removeSpecs = ()=>{
     this.setState({specsSelected: false})
   }
@@ -58,7 +66,7 @@ class BotsPage extends React.Component {
     return (
       <div>
       <YourBotArmy army={this.state.army} selectBot={this.selectBot}/>
-      {this.state.specsSelected ?  <BotSpecs bot={this.state.specsSelected} removeSpecs={this.removeSpecs}/> : <BotCollection bots={this.state.bots} selectBot={this.selectBot} />}
+      {this.state.specsSelected ?  <BotSpecs bot={this.state.specsSelected} refactorAddToArmy={this.refactorAddToArmy} removeSpecs={this.removeSpecs}/> : <BotCollection bots={this.state.bots} selectBot={this.selectBot} />}
       </div>
     );
   }
