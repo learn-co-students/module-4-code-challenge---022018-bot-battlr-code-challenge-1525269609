@@ -1,11 +1,13 @@
 import React from "react";
 import BotCollection from './BotCollection'
 import YourBotArmy from './YourBotArmy'
+import BotSpecs from '../components/BotSpecs'
+
 class BotsPage extends React.Component {
   //start here with your code for step one
   constructor(){
     super()
-    this.state={bots: [], army: []}
+    this.state={bots: [], army: [], specsSelected: false}
   }
 
   componentDidMount() {
@@ -26,23 +28,27 @@ class BotsPage extends React.Component {
   selectBot = (bot)=>{
     console.log("BotsPage: botcard returned object: ");
     console.log(bot);
-    console.log(this.botInArmy(bot));
-    if(!this.botInArmy(bot)){
-      let bots = [...this.state.army]
-      bots.push(bot)
-      this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
-    }
-    else{
-      //remove bot from army
-      let bots = [...this.state.army]
-      let index = null;
-      for(let i=0;i<bots.length;i++){if(bot.id === bots[i].id){index=i}}
-      console.log("*********INDEX is:" +index);
-      bots.splice(index,1)
-      this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
-    }
+    // console.log(this.botInArmy(bot));
+    // this.setState({specsSelected: true})
+    this.setState({specsSelected: bot})
+    // if(!this.botInArmy(bot)){
+    //   let bots = [...this.state.army]
+    //   bots.push(bot)
+    //   this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
+    // }
+    // else{
+    //   //remove bot from army
+    //   let bots = [...this.state.army]
+    //   let index = null;
+    //   for(let i=0;i<bots.length;i++){if(bot.id === bots[i].id){index=i}}
+    //   console.log("*********INDEX is:" +index);
+    //   bots.splice(index,1)
+    //   this.setState({army: bots},()=>{console.log("logging army:");console.log(this.state.army);})
+    // }
   }
-
+  removeSpecs = ()=>{
+    this.setState({specsSelected: false})
+  }
   storeJSON(json){
     this.setState({bots: json})
   }
@@ -52,7 +58,7 @@ class BotsPage extends React.Component {
     return (
       <div>
       <YourBotArmy army={this.state.army} selectBot={this.selectBot}/>
-      <BotCollection bots={this.state.bots} selectBot={this.selectBot} />
+      {this.state.specsSelected ?  <BotSpecs bot={this.state.specsSelected} removeSpecs={this.removeSpecs}/> : <BotCollection bots={this.state.bots} selectBot={this.selectBot} />}
       </div>
     );
   }

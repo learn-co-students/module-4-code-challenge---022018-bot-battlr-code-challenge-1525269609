@@ -2,8 +2,10 @@ import React from "react";
 
 const BotSpecs = props => {
   let { bot } = props;
+  let { removeSpecs } = props;
 
   let botType;
+  // let removeSpecs = this.props.removeSpecs
 
   switch (bot.bot_class) {
     case "Assault":
@@ -61,7 +63,8 @@ const BotSpecs = props => {
             <button
               className="ui button fluid"
               onClick={() =>
-                console.log('connect this to a function that shows all bots')
+                // console.log('connect this to a function that shows all bots')
+                removeSpecs()
               }
             >
               Go Back
