@@ -4,7 +4,7 @@ import BotCard from "../components/BotCard";
 class YourBotArmy extends React.Component {
 
   render(){
-    const bots = this.props.bots.map(bot => <BotCard bot={bot} key={bot.id} toggle={this.props.toggle}/>)
+    const bots = this.props.bots.map(bot => <BotCard bot={bot} key={bot.id} selectBot={this.props.selectBot} />)
     return (
       <div className="ui segment inverted olive bot-army">
         <div className="ui five column grid">
