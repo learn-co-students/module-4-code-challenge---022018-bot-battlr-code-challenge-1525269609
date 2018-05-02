@@ -78,6 +78,7 @@ class BotsPage extends React.Component {
   addToArmy = (id) => {
     if (this.state.army.find(bot => bot.id == id)) {
       alert("You already have this bot in your army")
+      this.allView()
     } else {
       let myBot = this.state.bots.find(bot => bot.id == id)
       this.setState({
